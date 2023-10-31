@@ -43,33 +43,19 @@ switch ($routeInfo[0]) {
         $viewName = $response->getViewName();
         $data = $response->getData();
 
-        $articleList = [
-            'Article Show 1',
-            'Article Show 2',
-            'Article Show 3',
-            'Article Show 4',
-            'Article Show 5',
-            'Article Show 6',
-            'Article Show 7',
-            'Article Show 8'
-        ];
-
         if ($viewName === 'Article List') {
             echo $twig->render('article.twig', [
                 'articles' => $data['articles'],
-                'viewName' => $viewName]);
+                'viewName' => $viewName,
+            ]);
         } else {
-            foreach ($articleList as $articles) {
-                if ($viewName === $articles) {
-                    $article = $data['article'];
-                    echo $twig->render('article.twig', [
-                        'title' => $article->getTitle(),
-                        'content' => $article->getDescription(),
-                        'date' => $article->getPublicationDate(),
-                        'viewName' => $viewName,
-                    ]);
-                    break;
-                }
-            }
+            $article = $data['article'];
+            $viewName = 'Article Show ' . $article->getTitle();
+            echo $twig->render('article.twig', [
+                'title' => $article->getTitle(),
+                'content' => $article->getDescription(),
+                'date' => $article->getPublicationDate(),
+                'viewName' => $viewName,
+            ]);
         }
 }
