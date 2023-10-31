@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Article List</title>
+    <link rel="stylesheet" href="/app/Views/styles.css">
+</head>
+<body>
+<div class="article-list">
+    <h1>Article List</h1>
+    <ul>
+        {% for article in articles %}
+            <li>
+                <a a href="/articles-show{{ loop.index }}">
+                    <h2>{{ article.title }}</h2>
+                    <p>{{ article.description }}</p>
+                    <p class="date">{{ article.publicationDate }}</p>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <h3 class="article-title">{{ title }}</h3>
+    <p class="articles">{{ content }}</p>
+    <p class="articles-date">{{ date }}</p>
+</div>
+</body>
+</html>
+
