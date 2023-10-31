@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Article List</title>
     <link rel="stylesheet" href="/app/Views/styles.css">
 </head>
 <body>
 <div class="article-list">
-    <h1>Article List</h1>
+    <h1>{{ viewName }}</h1>
     <ul>
         {% for article in articles %}
             <li>

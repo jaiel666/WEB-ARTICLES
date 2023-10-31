@@ -55,7 +55,9 @@ switch ($routeInfo[0]) {
         ];
 
         if ($viewName === 'Article List') {
-            echo $twig->render('article.twig', ['articles' => $data['articles']]);
+            echo $twig->render('article.twig', [
+                'articles' => $data['articles'],
+                'viewName' => $viewName]);
         } else {
             foreach ($articleList as $articles) {
                 if ($viewName === $articles) {
@@ -63,7 +65,8 @@ switch ($routeInfo[0]) {
                     echo $twig->render('article.twig', [
                         'title' => $article->getTitle(),
                         'content' => $article->getDescription(),
-                        'date' => $article->getPublicationDate()
+                        'date' => $article->getPublicationDate(),
+                        'viewName' => $viewName,
                     ]);
                     break;
                 }
